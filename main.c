@@ -14,8 +14,8 @@ int main()
     while (true) 
     {
         clearScreen();
-        printf("\n\t **** Welcome to Contact Management System ****");
-        printf("\n\n\n\t\t\tMAIN MENU");
+        printf("\n\t\t **** Welcome to our ****");
+        printf("\n\n\t\t\tMAIN MENU");
         printf("\n\t\t=====================");
         printf("\n\t\t[1] Add a new product");
         printf("\n\t\t[2] Remove a product");
@@ -60,6 +60,20 @@ int main()
 
             T_Product product = CreateProduct(id, name, quantity, price);
             AddProduct(&DB, product);
+
+            printf("\n\t\tProduct added successfully!\n");
+            printf("\n\t\tDo you want to save it to the database? (y/n): ");
+            char save;
+            scanf("%c", &save);
+            getchar();
+            if (save == 'y')
+            {
+                saveCSV("database.csv", DB);
+            }
+            else
+            {
+                printf("\n\t\tProduct not saved!\n");
+            }
         }
         else if (choice == 2)
         {
@@ -104,6 +118,9 @@ int main()
             {
                 printf("\n\t\tProduct not found!\n");
             }
+
+            printf("\n\t\tpress any key to continue...");
+            getchar();
         }
         else if (choice == 4)
         {
@@ -138,27 +155,38 @@ int main()
                 printf("\n\t\tEnter the new product price: ");
                 double price;
                 scanf("%lf", &price);
+
+                EditProduct(&DB, product.name, id, name, quantity, price);
+
             }
         } else if (choice == 5)
         {
             clearScreen();
 
-            printf("\n\n\n\t\t\tSave list of products to database");
+            printf("\n\n\n\t\tSave list of products to database");
             printf("\n\t\t=====================");
 
             saveCSV("database.csv", DB);
+
+            printf("\n\t\tProducts saved successfully!\n");
+
+            printf("\n\t\tpress any key to continue...");
+            getchar();
 
         } else if (choice == 6)
         {
             clearScreen();
 
-            printf("\n\n\n\t\t\tDisplay list of products");
+            printf("\n\n\n\tDisplay list of products");
             printf("\n\t\t=====================");
 
-            // readCSV(&DB, "database.csv");
+            for (int i = 0; i < DB.NumberOfProduct; i++)
+            {   
+                DisplayProduct(DB.db[i]);
+            }
 
-            // printf("\n\t\tNumber of products: %d", DB.NumberOfProduct);
-            // printf("\n\t\t=====================");
+            printf("\n\t\tNumber of products: %d", DB.NumberOfProduct);
+            printf("\n\t\t=====================");
 
             printf("\n\t\tpress any key to continue...");
             getchar();
@@ -167,6 +195,11 @@ int main()
             clearScreen();
             printf("\n\n\n\t\t\tThank you for using the program!");
             printf("\n\t\t=====================");
+
+            printf("\n\t\tpress any key to continue...");
+            getchar();
+            break;
+
         }
         
     }

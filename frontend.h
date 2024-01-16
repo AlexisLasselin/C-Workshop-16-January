@@ -86,3 +86,14 @@ void DeleteProduct(T_DataBase* xdb, char xname[50])
         printf("Product Deleted\n");
     }
 }
+
+void EditProduct(T_DataBase* xdb, char xname[50], int xid, char xname2[50], int xquantity, double xprice)
+{
+    T_Product x;
+    x = Search(xdb, xname);
+    if(x.index != -1)
+    {
+        xdb->db[x.index] = CreateProduct(xid, xname2, xquantity, xprice);
+        printf("Product Edited\n");
+    }
+}
