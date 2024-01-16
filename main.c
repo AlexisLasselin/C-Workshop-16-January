@@ -22,7 +22,7 @@ int main()
         printf("\n\t\t[3] Search a product");
         printf("\n\t\t[4] Edit/Update a product");
         printf("\n\t\t[5] Save list of products to database");
-        printf("\n\t\t[6] Display list of products !!NOT WORKING!!");
+        printf("\n\t\t[6] Display list of products");
         printf("\n\t\t[0] Exit the program");
         printf("\n\t\t=================\n\t\t");
 
