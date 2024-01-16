@@ -74,6 +74,7 @@ void DeleteProduct(T_DataBase* xdb, char xname[50])
         {
             xdb->db[i] = xdb->db[i+1];
         }
+        xdb->NumberOfProduct = xdb->NumberOfProduct-1;
         printf("Product Deleted\n");
     }
 }

@@ -30,10 +30,28 @@ int removeCSVNew(const char* fileName)
         printf("Deleted successfully the csv file.\n");
     else
         printf("Unable to delete the file\n");
- 
+
     return 0;
 }
 
+int saveCSV (const char* fileName, T_DataBase DB)
+{
+    FILE* myFile = fopen(fileName, "w");
+    if(myFile == NULL)
+    {
+        fputs("Cannot open file\n", stderr);
+        return EXIT_FAILURE;
+    }
+
+    for(int i = 0; i < DB.NumberOfProduct; i++)
+    {
+        fprintf(myFile, "%d,%s,%d,%lf\n", DB.db[i].id, DB.db[i].name, DB.db[i].quantity, DB.db[i].price);
+    }
+
+    fclose(myFile);
+
+    return EXIT_SUCCESS;
+}
 
 /* This is the instructions*/
 

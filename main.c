@@ -19,6 +19,9 @@ int main() {
     DeleteProduct(&DB, "rice");
     DisplayProduct(Search(&DB, "rice"));
 
+    saveCSV("database.csv", DB);
+
+
 
     return EXIT_SUCCESS;
 }
