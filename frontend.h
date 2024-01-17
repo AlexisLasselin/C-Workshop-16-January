@@ -1,12 +1,12 @@
 #include <string.h>
 
-void clearScreen() {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
-}
+// void clearScreen() {
+//     #ifdef _WIN32
+//         system("cls");
+//     #else
+//         system("clear");
+//     #endif
+// }
 
 typedef struct Product
 {
