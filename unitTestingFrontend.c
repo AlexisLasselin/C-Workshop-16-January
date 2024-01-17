@@ -53,6 +53,24 @@ int main(void)
 
     printf("========================================\n");
 
+    //UNIT TEST 6: DELETE A PRODUCT IN DATABASE
+
+    DeleteProduct(&db, "Test");
+    assert(db.NumberOfProduct == 0);
+    printf("UNIT TEST 6: DELETE A PRODUCT IN DATABASE: PASSED\n");
+
+    printf("========================================\n");
+
+    //UNIT TEST 7: UPDATE A PRODUCT IN DATABASE
+
+    AddProduct(&db, product);
+    EditProduct(&db, "Test", 2, "Test2", 3, 2.0);
+    assert(db.db[0].id == 2);
+    assert(strcmp(db.db[0].name, "Test2") == 0);
+    assert(db.db[0].quantity == 3);
+    assert(db.db[0].price == 2.0);
+    assert(db.db[0].index == 0);
+    printf("UNIT TEST 7: UPDATE A PRODUCT IN DATABASE: PASSED\n");
 }
 
 
